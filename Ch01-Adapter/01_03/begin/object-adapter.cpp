@@ -37,10 +37,10 @@ public:
     }    
 };
 
-class LegacyClassAdapter: public Component, private LegacyComponent
+class LegacyClassAdapter: public Component
 {
 public:
-    LegacyAdapter() : m_adaptee(make_unique<LegacyComponent>()) {}
+    LegacyClassAdapter() : m_adaptee(make_unique<LegacyComponent>()) {}
 
     virtual void run() override
     {
@@ -59,7 +59,7 @@ int main()
     {
         make_unique<ConcreteComponentA>(),
         make_unique<ConcreteComponentB>(),
-        make_unique<LegacyAdapter>()
+        make_unique<LegacyClassAdapter>()
     };
     
     for (const auto& component : components)
